@@ -6,9 +6,10 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
+import os
 
 #students data
-df=pd.read_csv('D:\\6th semester\\Mini Project - 4\\PROJECT\\STUDENTS_DATA\\FLASK\\data\\10yrsmerged.csv')
+df=pd.read_csv(os.path.abspath('data/10yrsmerged.csv'))
 
 branches=df['Branch'].unique()
 
@@ -24,7 +25,7 @@ vis3=pd.melt(vis3,id_vars=['Year'],value_vars=['Total No. of Offer Letters','No.
 fig4=px.line(vis3,x='Year',y='count',color='variable')
 
 #companies data
-pm=pd.read_csv('D:\\6th semester\\Mini Project - 4\\PROJECT\\STUDENTS_DATA\\FLASK\\data\\11yrsmerged_recruitmentwise.csv')
+pm=pd.read_csv(os.path.abspath('data/11yrsmerged_recruitmentwise.csv'))
 pm.set_index('Name of the Organization',inplace=True)
 
 br_tot=pd.DataFrame(pm.loc['GRAND TOTAL'])
@@ -41,8 +42,8 @@ pm2=pm1.drop('TOTAL',axis=1)
 ttcomp=pm1.sort_values(by='TOTAL',ascending=False).head(10).index
 
 #salary data
-conca=pd.read_csv('D:\\6th semester\\Mini Project - 4\\PROJECT\\STUDENTS_DATA\\FLASK\\data\\11yrsmerged_salarywise_withinternships.csv')
-PL=pd.read_csv('D:\\6th semester\\Mini Project - 4\\PROJECT\\STUDENTS_DATA\\FLASK\\data\\11yrsmerged_salarywise_withoutinternships.csv')
+conca=pd.read_csv(os.path.abspath('data/11yrsmerged_salarywise_withinternships.csv'))
+PL=pd.read_csv(os.path.abspath('data/11yrsmerged_salarywise_withoutinternships.csv'))
 
 
 sl=PL.groupby('Year').agg({'Salary Per Annum (Rs. In Lakhs)':[np.mean,np.median]}).stack().reset_index().rename(columns={'level_1':'Type'})
