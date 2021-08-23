@@ -94,6 +94,20 @@ def create_dash_application(flask_app):
         style={'textAlign': 'center'}),
         
         html.Br(),
+
+         html.Div([
+            html.H1('DEVELOPED BY: Aditi.I 160118737001 & P.Sathvika 160118737016 - IT1, CBIT')
+        ],
+        style={'textAlign': 'center', 'color':'red'}),
+        
+        html.Br(),
+
+         html.Div([
+            html.H1('UNDER THE GUIDANCE OF: Smt. T. Prathima - Asst. Prof. IT Dept, CBIT')
+        ],
+        style={'textAlign': 'center', 'color':'red'}),
+        
+        html.Br(),
         
         html.Div([
             html.H2('Branch Wise No. of Placements')
